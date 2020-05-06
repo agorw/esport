@@ -3,10 +3,36 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+          {{ encore_entry_link_tags('app')}}
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    <header>
+        <div class="container row ban">
+        </div>
+    </header>
+        <div class="container ombre">
+            <div class="col">
+                <div class="row">
+                    <div class="coin"></div>
+                    <div class="ligne"></div>
+                    <div class="coin r9"></div>
+                </div>
+                <div class="row">
+                    <div class="colone"></div>
+                    <div class="contenu">
+                        
+                    </div>
+                    <div class="colone"></div>
+                </div>
+                <div class="row">
+                    <div class="coin r27"></div>
+                    <div class="ligne"></div>
+                    <div class="coin r18"></div>
+                </div>
+            </div>
+        </div>
+         {{ encore_entry_script_tags('app')}}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

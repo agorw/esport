@@ -1,0 +1,58 @@
+$primary: crimson;
+
+@import "common.scss";
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #090055;
+}
+.container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0;
+}
+.coin {
+  width: 10px;
+  height: 10px;
+  background-image: url("../img/coin.png");
+  background-repeat: no-repeat;
+}
+.ligne {
+  width: calc(100% - 20px);
+  height: 10px;
+  background-image: url("../img/ligne.jpg");
+  background-repeat: repeat-x;
+}
+.colone {
+  width: 10px;
+  background-image: url("../img/col.jpg");
+  background-repeat: repeat-y;
+}
+.r9 {
+  rotate: 90deg;
+}
+.r18 {
+  rotate: 180deg;
+}
+.r27 {
+  rotate: 270deg;
+}
+.contenu {
+  width: calc(100% - 20px);
+  min-height: 500px;
+  background-color: gray;
+}
+.ban {
+  background-image: url("../img/dent.png");
+  background-size: 590px;
+  height: 77px;
+  margin: auto;
+  margin-top: 0;
+}
+.ombre {
+  -webkit-box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 1);
+  box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 1);
+}
