@@ -80,8 +80,8 @@ body {
 header {
   background-image: url("../img/header-ligne.png");
   background-repeat: repeat-x;
-  left: -50%;
-  right: -50%;
+  top: 0;
+  width: 100%;
   position: fixed;
 }
 .header {
@@ -93,19 +93,18 @@ header {
   margin: auto;
 }
 footer {
-  background-image: url("../img/header-ligne.png");
+  background-image: url("../img/footer-ligne.png");
   background-repeat: repeat-x;
   bottom: 0;
   width: 100%;
   position: fixed;
-  margin: auto;
 }
 .footer {
-  background-image: url("../img/header.png");
+  background-image: url("../img/footer.png");
   background-repeat: no-repeat;
   background-size: 100%;
   width: 1280px;
-  height: 212px;
+  height: 320px;
   bottom: 0;
   margin: auto;
 }
