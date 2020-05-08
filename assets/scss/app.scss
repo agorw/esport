@@ -6,11 +6,10 @@ body {
   width: 100%;
 }
 .container {
-  margin-top: 125px;
+  margin-top: -75px;
   margin-bottom: 0px;
   max-width: 920px;
   padding: 0;
-  position: relative;
   z-index: 10;
 }
 .coin {
@@ -53,11 +52,8 @@ body {
 }
 .contenu {
   width: calc(100% - 20px);
-  height: 60vh;
+  min-height: 60vh;
   background-color: gray;
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: #455fb6 gray;
 }
 .ban {
   background-image: url("../img/dent.png");
@@ -96,13 +92,18 @@ body {
   -webkit-box-shadow: inset 0 0 0 1px rgb(31, 116, 243),
     inset 0 0 0 6px rgb(69, 95, 182);
 }
-
+/* scollbar */
+.scrollbar-y {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #455fb6 gray;
+}
 /* header html */
 header {
   background-repeat: repeat-x;
   top: 0;
   width: 100%;
-  position: fixed;
+  // position: fixed;
 }
 .header {
   background-repeat: no-repeat;
@@ -115,7 +116,6 @@ footer {
   background-repeat: repeat-x;
   bottom: 0;
   width: 100%;
-  position: fixed;
 }
 .footer {
   background-image: url("../img/footer.png");
@@ -126,6 +126,7 @@ footer {
   bottom: 0;
   margin: auto;
 }
+
 // Small devices (landscape phones, 480px and up)
 @media (min-width: 0px) {
   header {
@@ -145,7 +146,8 @@ footer {
     height: 153px;
   }
   .container {
-    margin-top: 130px;
+    margin-top: -20px;
+    margin-bottom: -30px;
   }
 }
 /* mobil lg */
@@ -167,7 +169,8 @@ footer {
     height: 156px;
   }
   .container {
-    margin-top: 95px;
+    margin-top: -45px;
+    margin-bottom: -30px;
   }
 }
 // Medium devices (tablets, 768px and up)
@@ -189,7 +192,7 @@ footer {
     height: 316px;
   }
   .container {
-    margin-top: 150px;
+    margin-top: -50px;
   }
 }
 
@@ -212,7 +215,7 @@ footer {
     height: 383px;
   }
   .container {
-    margin-top: 150px;
+    margin-top: -50px;
   }
 }
 
