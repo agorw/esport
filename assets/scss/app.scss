@@ -1,19 +1,13 @@
-$primary: crimson;
-
 @import "common.scss";
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+
 body {
   background-color: #000b1a;
   height: 100%;
   width: 100%;
-  position: fixed;
 }
 .container {
   margin-top: 125px;
+  margin-bottom: 0px;
   max-width: 920px;
   padding: 0;
   position: relative;
@@ -59,7 +53,7 @@ body {
 }
 .contenu {
   width: calc(100% - 20px);
-  height: 400px;
+  height: 60vh;
   background-color: gray;
   overflow-y: scroll;
   scrollbar-width: thin;
@@ -150,6 +144,9 @@ footer {
     width: 320px;
     height: 153px;
   }
+  .container {
+    margin-top: 130px;
+  }
 }
 /* mobil lg */
 @media (min-width: 576px) {
@@ -168,6 +165,9 @@ footer {
     background-image: url("../img/footer-mobil-lg.png");
     width: 480px;
     height: 156px;
+  }
+  .container {
+    margin-top: 95px;
   }
 }
 // Medium devices (tablets, 768px and up)
@@ -188,6 +188,9 @@ footer {
     width: 768px;
     height: 316px;
   }
+  .container {
+    margin-top: 150px;
+  }
 }
 
 // Large devices (desktops, 1024px and up)
@@ -207,6 +210,9 @@ footer {
     background-image: url("../img/footer-tablette.png");
     width: 1019px;
     height: 383px;
+  }
+  .container {
+    margin-top: 150px;
   }
 }
 
