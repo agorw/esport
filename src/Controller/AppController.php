@@ -11,6 +11,7 @@ class AppController extends AbstractController
      *
      * @Route("/")
      * @Route("/index.php")
+     * @Route("/index.html")
      */
     public function index()
     {
