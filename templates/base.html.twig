@@ -2,15 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Majagx{% endblock %}</title>
           {{ encore_entry_link_tags('app')}}
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-    <header>
-        <div class="container row ban">
-        </div>
-    </header>
+    <header><div class="header"></div></header>
         <div class="container ombre">
             <div class="col">
                 <div class="row">
@@ -20,8 +17,9 @@
                 </div>
                 <div class="row">
                     <div class="colone"></div>
-                    <div class="contenu">
-                        
+                    <div class="contenu" >
+                        {% block body %}
+                        {% endblock %}
                     </div>
                     <div class="colone"></div>
                 </div>
@@ -32,6 +30,7 @@
                 </div>
             </div>
         </div>
+        <footer><div class="footer"></div></footer>
          {{ encore_entry_script_tags('app')}}
         {% block javascripts %}{% endblock %}
     </body>
