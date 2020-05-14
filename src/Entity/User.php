@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\Constraints as AppAssert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -36,24 +38,35 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=20)
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 20,
+     *      minMessage = "Le pseudo doit être plus grand que {{ limit }} caractères",
+     *      maxMessage = "Le pseudo doit être plus petit que {{ limit }} caractères",
+     *      allowEmptyString = false
+     * )
      */
     private $pseudo;
 
-    /**
-     * @ORM\Column(type="date")
+     /**
+     * @var string
+     * @ORM\Column(name="telephone", type="string", length=35)
+     * @Assert\NotBlank()
+     * @AppAssert\Telephone()
      */
-    private $date_creation;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $telephone;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="datetime", nullable=true)
      */
-    private $jeton;
+    private $date_create;
+
+    public function __construct()
+    {
+    $this->date_create = new \DateTime('now');
+    }
 
     public function getId(): ?int
     {
@@ -145,39 +158,34 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getDateCreation(): ?\DateTimeInterface
+    public function setTelephone($telephone)
     {
-        return $this->date_creation;
-    }
-
-    public function setDateCreation(\DateTimeInterface $date_creation): self
-    {
-        $this->date_creation = $date_creation;
-
+        $this->telephone = $telephone;
+ 
         return $this;
     }
-
-    public function getTelephone(): ?int
+ 
+    /**
+     * Get telephone
+     *
+     * @return string
+     */
+    public function getTelephone()
     {
         return $this->telephone;
     }
-
-    public function setTelephone(int $telephone): self
+  
+    public function getDateCreate(): ?\DateTimeInterface
     {
-        $this->telephone = $telephone;
+        return $this->date_create;
+    }
+
+    public function setDateCreate(?\DateTimeInterface $date_create): self
+    {
+        $this->date_create = $date_create;
 
         return $this;
     }
 
-    public function getJeton(): ?string
-    {
-        return $this->jeton;
-    }
-
-    public function setJeton(string $jeton): self
-    {
-        $this->jeton = $jeton;
-
-        return $this;
-    }
+    
 }
