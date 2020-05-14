@@ -5,7 +5,6 @@
  * (and its CSS file) in your base layout (base.html.twig).
  */
 
-
 import "./common";
 // any CSS you import will output into a single css file (app.css in this case)
 import "../scss/app.scss";
@@ -45,6 +44,7 @@ codePostal.addEventListener("change", function () {
       }
     };
   }
+<<<<<<< HEAD
 $("body").click(function () {
   console.log("jquery");
 
@@ -53,6 +53,8 @@ $("body").click(function () {
 $("#sidebarCollapse").click(function () {
   $("#sidebar").toggleClass('active');
   $("#sidebarCollapse").hide();
+=======
+>>>>>>> versionning
 });
 
 $("#btn-return").click(function () {
