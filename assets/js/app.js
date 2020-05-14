@@ -1,4 +1,3 @@
-import $ from "jquery";
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -48,4 +47,15 @@ codePostal.addEventListener("change", function () {
   }
 $("body").click(function () {
   console.log("jquery");
+
+// Lorsqu'on clique sur le bouton menu, donne/enleve la classe "active" à sidebar
+// Cela permet de la faire apparaitre ou disparaitre
+$("#sidebarCollapse").click(function () {
+  $("#sidebar").toggleClass('active');
+  $("#sidebarCollapse").hide();
+});
+
+$("#btn-return").click(function () {
+  $("#sidebar").toggleClass('active');
+  $("#sidebarCollapse").show()
 });

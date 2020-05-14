@@ -125,6 +125,36 @@ footer {
 .scrollbar-y {
   overflow-y: scroll;
   scrollbar-width: thin;
+  scrollbar-color: #455fb6 gray;
+}
+/* header html */
+header {
+  background-repeat: repeat-x;
+  top: 0;
+  width: 100%;
+  // position: fixed;
+}
+.header {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin: auto;
+}
+
+/* footer html */
+footer {
+  background-image: url("../img/footer-ligne.png");
+  background-repeat: repeat-x;
+  bottom: 0;
+  width: 100%;
+}
+.footer {
+  background-image: url("../img/footer.png");
+  width: 1280px;
+  height: 320px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  bottom: 0;
+  margin: auto;
   scrollbar-color: $color3 $color;
 }
 
@@ -247,14 +277,14 @@ footer {
     position: absolute;
     display: flex;
     align-items: stretch;
-    margin-top: 43px;
+    z-index: 10000;
     margin-right: 100px;
 }
 
 #sidebar {
     min-width: 200px;
     max-width: 200px;
-    min-height: 101vh;
+    min-height: 115vh;
 }
 
 #sidebar.active {
@@ -289,7 +319,6 @@ a, a:hover, a:focus {
 }
 
 #sidebar {
-    /* don't forget to add all the previously mentioned styles here too */
     background: #012150;
     color: #fff;
     transition: all 0.3s;
@@ -330,7 +359,7 @@ ul ul a {
     background: #012150;
 }
 
-#logo {
+#menuLogo {
     background-image: url("../img/Logo.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -345,5 +374,12 @@ ul ul a {
 }
 
 #btn-return {
+    position: relative;
     color: #fff;
+    left: 145px;
+    top: -10px;
+}
+
+#btn-return:hover {
+  color: #008AB8;
 }
