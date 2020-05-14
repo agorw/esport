@@ -18,6 +18,7 @@ console.log("**********( <  )*******************");
 console.log("***********// \\\\**** BY AgorW******");
 console.log("***********************************");
 
+/* formulaire profil ajout de la premiere ville et pays france avec code postal */
 let codePostal = document.getElementById("profil_code_postal");
 let pays = document.getElementById("profil_pays");
 let ville = document.getElementById("profil_ville");
