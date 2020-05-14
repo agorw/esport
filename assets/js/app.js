@@ -31,28 +31,7 @@ codePostal.addEventListener("change", function () {
       let data = ajax.response;
       console.log(data);
       pays.value = data.country;
-      let i = 0;
-      ville.innerHTML = "<option value='select'>Selectionnez </option>";
-      for (let item in data.places) {
-        ville.innerHTML +=
-          "<option value='" +
-          data.places[i]["place name"] +
-          "'>" +
-          data.places[i]["place name"] +
-          "</option>";
-        i++;
-      }
+      ville.value = data.places[0]["place name"];
     };
   }
-});
-// Lorsqu'on clique sur le bouton menu, donne/enleve la classe "active" à sidebar
-// Cela permet de la faire apparaitre ou disparaitre
-$("#sidebarCollapse").click(function () {
-  $("#sidebar").toggleClass("active");
-  $("#sidebarCollapse").hide();
-});
-
-$("#btn-return").click(function () {
-  $("#sidebar").toggleClass("active");
-  $("#sidebarCollapse").show();
 });
