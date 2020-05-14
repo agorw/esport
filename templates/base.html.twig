@@ -7,22 +7,12 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-    <div id="content">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                        <span><i class="fas fa-bars"></i> Menu </span>
-                    </button>
-
-                </div>
-            </nav>
-        </div>
-        <div class="wrapper">
+        <div class="wrapper col-md">
             <!-- Sidebar -->
-            <nav id="sidebar">
+            <nav id="sidebar" class="active">
                 <div class="sidebar-header">
-                    <div id="logo"></div>
+                    <i id="btn-return" class="fas fa-arrow-alt-circle-left fa-2x"></i>
+                    <div id="menuLogo"></div>
                 </div>
                 
                 <ul class="list-unstyled components">
@@ -30,9 +20,9 @@
                     <li>
                         <a href="#">Acceuil</a>
                     </li>
-                    <li class="active">
-                        <a href="#ProfilSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profil</a>
-                        <ul class="collapse list-unstyled" id="ProfilSubmenu">
+                    <li>
+                        <a href="#profilSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profil</a>
+                        <ul class="collapse list-unstyled" id="profilSubmenu">
                             <li>
                                 <a href="#">Votre Profil</a>
                             </li>
@@ -66,7 +56,17 @@
                     </li>
                 </ul>
             </nav>
-            <i id="btn-return" class="fas fa-arrow-alt-circle-left fa-2x"></i>
+        </div>
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <span><i class="fas fa-bars"></i> Menu </span>
+                    </button>
+
+                </div>
+            </nav>
         </div>
     <header><div class="header"></div></header>
         <div class="container ombre">
