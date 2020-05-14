@@ -34,7 +34,7 @@ class Builder
             ),
         ));
 
-        $menu->addChild('Home', ['route' => 'app\index.html.twig']);
+        $menu->addChild('Home', ['route' => 'indexphp']);
 
         return $menu;
     }
