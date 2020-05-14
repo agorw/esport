@@ -69,7 +69,7 @@ class ProfilController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('profil_index');
+            return $this->redirectToRoute('profil_show', ['id' => $profil->getId()]);
         }
 
         return $this->render('profil/edit.html.twig', [
@@ -83,7 +83,7 @@ class ProfilController extends AbstractController
      */
     public function delete(Request $request, Profil $profil): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$profil->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $profil->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($profil);
             $entityManager->flush();

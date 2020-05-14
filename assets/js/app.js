@@ -19,6 +19,35 @@ console.log("**********( <  )*******************");
 console.log("***********// \\\\**** BY AgorW******");
 console.log("***********************************");
 
+let codePostal = document.getElementById("profil_code_postal");
+let pays = document.getElementById("profil_pays");
+let ville = document.getElementById("profil_ville");
+codePostal.addEventListener("change", function () {
+  if (codePostal.value != "") {
+    let ajax = new XMLHttpRequest();
+    ajax.responseType = "json";
+    ajax.open("GET", "http://api.zippopotam.us/fr/" + codePostal.value);
+    ajax.send();
+    ajax.onload = () => {
+      let data = ajax.response;
+      console.log(data);
+      pays.value = data.country;
+      let i = 0;
+      ville.innerHTML = "<option value='select'>Selectionnez </option>";
+      for (let item in data.places) {
+        ville.innerHTML +=
+          "<option value='" +
+          data.places[i]["place name"] +
+          "'>" +
+          data.places[i]["place name"] +
+          "</option>";
+        i++;
+      }
+    };
+  }
+$("body").click(function () {
+  console.log("jquery");
+
 // Lorsqu'on clique sur le bouton menu, donne/enleve la classe "active" à sidebar
 // Cela permet de la faire apparaitre ou disparaitre
 $("#sidebarCollapse").click(function () {
