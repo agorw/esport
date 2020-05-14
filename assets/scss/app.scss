@@ -369,9 +369,9 @@ ul ul a {
 }
 
 #sidebarCollapse {
-    position: absolute;
-    top: 50%;
-    left: 50px;
+    position: fixed;
+    top: 5px;
+    left: 5px;
 }
 
 #btn-return {
