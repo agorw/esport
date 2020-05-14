@@ -4,16 +4,16 @@ namespace App\Menu;
 
 use Knp\Menu\FactoryInterface;
 
-class Builder 
+class Builder
 {
     /**
      * Objet pour construire un menu.
      */
     private $factory;
 
-    public function __construct(FactoryInterface $factory) 
+    public function __construct(FactoryInterface $factory)
     {
-        $this->factory = $factory; 
+        $this->factory = $factory;
     }
 
     /**
@@ -23,20 +23,19 @@ class Builder
      *
      * @return \Knp\Menu\ItemInterface The complete menu.
      */
-    public function mainMenu(array $options) 
+    public function mainMenu(array $options)
     {
         $menu = $this->factory->createItem('root', array(
             'childrenAttributes'    => array(
-            'class'                 => 'page-sidebar-menu',
-            'data-keep-expanded'    => 'false',
-            'data-auto-scroll'      => 'false',
-            'data-slide-speed'      => '100',
+                'class'                 => 'page-sidebar-menu',
+                'data-keep-expanded'    => 'false',
+                'data-auto-scroll'      => 'false',
+                'data-slide-speed'      => '100',
             ),
         ));
 
-        $menu->addChild('Home', ['route' => 'app_app_index']);
+        $menu->addChild('Home', ['route' => 'indexphp']);
 
         return $menu;
     }
-
 }
