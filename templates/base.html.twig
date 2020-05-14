@@ -7,7 +7,7 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        <div class="wrapper col-md">
+        <div class="wrapper">
             <!-- Sidebar -->
             <nav id="sidebar" class="active">
                 <div class="sidebar-header">
@@ -16,7 +16,8 @@
                 </div>
                 
                 <ul class="list-unstyled components">
-                    <p> Votre Menu </p> 
+                    <p> Votre Menu </p>
+                    {{ knp_menu_render('main', {'style': 'vertical'}) }} 
                     <li>
                         <a href="#">Acceuil</a>
                     </li>
