@@ -1,11 +1,13 @@
+import $ from "jquery";
 /*
  * Welcome to your app's main JavaScript file!
  *
  * We recommend including the built version of this JavaScript file
  * (and its CSS file) in your base layout (base.html.twig).
  */
-
+import "./menu";
 import "./common";
+
 // any CSS you import will output into a single css file (app.css in this case)
 import "../scss/app.scss";
 
@@ -44,20 +46,4 @@ codePostal.addEventListener("change", function () {
       }
     };
   }
-<<<<<<< HEAD
-$("body").click(function () {
-  console.log("jquery");
-
-// Lorsqu'on clique sur le bouton menu, donne/enleve la classe "active" à sidebar
-// Cela permet de la faire apparaitre ou disparaitre
-$("#sidebarCollapse").click(function () {
-  $("#sidebar").toggleClass('active');
-  $("#sidebarCollapse").hide();
-=======
->>>>>>> versionning
-});
-
-$("#btn-return").click(function () {
-  $("#sidebar").toggleClass('active');
-  $("#sidebarCollapse").show()
 });
