@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Profil;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +16,12 @@ class ProfilType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('date_nee')
+            ->add('date_nee', BirthdayType::class, [
+                'placeholder' => [
+                    'day' => 'Day', 'month' => 'Month', 'year' => 'Year',
+                ],
+                'format' => 'dd-MM-yyyy',
+            ])
             ->add('adress')
             ->add('ville')
             ->add('pays')
