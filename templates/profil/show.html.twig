@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block title %}Fiche Profil{% endblock %}
+
+{% block body %}
+    <br>
+    {% embed "decorators/_card.html.twig" with {'class': 'my-3 m-md-3'} %}
+    {% block header %}
+    <h3><a href="{{ path('profil_show', {'id': profil.id}) }}">{{ profil.nom }} {{ profil.prenom }}</a></h3>
+    {% endblock %}
+
+    {% block body %}
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Date_nee</th>
+                    <td><i>{{ profil.dateNee|date('d/m/Y') }}</i></td>
+                    
+                </tr>
+                <tr>
+                    <th>Adress</th>
+                    <td>{{ profil.adress }}</td>
+                </tr>
+                <tr>
+                    <th>Pays</th>
+                    <td>{{ profil.pays }}</td>
+                </tr>
+                <tr>
+                    <th>Code_postal</th>
+                    <td>{{ profil.codePostal }}</td>
+                </tr>
+                <tr>
+                    <td>
+                         <a class="btn btn-primary" href="{{ path('profil_edit', {'id': profil.id}) }}">edit</a>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+    {% endblock %}
+
+    {% endembed %}
+{% endblock %}
