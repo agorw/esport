@@ -34,7 +34,7 @@ class Builder
             ),
         ));
 
-        $menu->addChild('Home', ['route' => 'app_app_index']);
+        $menu->addChild('Home', ['route' => 'indexphp']);
 
         return $menu;
     }
