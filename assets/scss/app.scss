@@ -1,11 +1,33 @@
 @import "common.scss";
 @import "badge.scss";
 
+/* Variables des couleurs du projet */
+$color: gray;
+$color1: rgba(0, 0, 0, 1);
+$color2: rgb(31, 147, 255);
+$color3: rgb(69, 95, 182);
+$color4: rgb(210, 215, 224);
+$color5: #000b1a;
+
+/* element */
 body {
-  background-color: #000b1a;
+  background-color: $color5;
   height: 100%;
   width: 100%;
 }
+header {
+  background-repeat: repeat-x;
+  top: 0;
+  width: 100%;
+}
+footer {
+  background-image: url("../img/footer-ligne.png");
+  background-repeat: repeat-x;
+  bottom: 0;
+  width: 100%;
+}
+
+/* class */
 .container {
   margin-top: -75px;
   margin-bottom: 0px;
@@ -54,7 +76,7 @@ body {
 .contenu {
   width: calc(100% - 20px);
   min-height: 60vh;
-  background-color: gray;
+  background-color: $color;
 }
 .ban {
   background-image: url("../img/dent.png");
@@ -64,59 +86,12 @@ body {
   margin-top: 0;
 }
 .ombre {
-  -webkit-box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 1);
-  -moz-box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 1);
-  box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 1);
-}
-
-/* Scrollbars */
-::-webkit-scrollbar {
-  width: 14px;
-  height: 14px;
-  background: gray 0 0 repeat;
-}
-/* Fond */
-::-webkit-scrollbar-track-piece {
-  background: transparent none;
-  border: solid 4px transparent;
-  border-right-width: 12px;
-  -webkit-box-shadow: inset 1px 1px 0 0 rgb(31, 147, 255),
-    inset -1px -1px 0 0 rgb(210, 215, 224);
-}
-/* Barre */
-::-webkit-scrollbar-thumb {
-  border: solid 0 transparent;
-  border-right-width: 2px;
-  -webkit-border-radius: 5px;
-  -webkit-border-top-right-radius: 9px 5px;
-  -webkit-border-bottom-right-radius: 9px 5px;
-  -webkit-box-shadow: inset 0 0 0 1px rgb(31, 116, 243),
-    inset 0 0 0 6px rgb(69, 95, 182);
-}
-/* scollbar */
-.scrollbar-y {
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: #455fb6 gray;
-}
-/* header html */
-header {
-  background-repeat: repeat-x;
-  top: 0;
-  width: 100%;
-  // position: fixed;
+  @include box-shadow(0px 4px 16px 1px $color1);
 }
 .header {
   background-repeat: no-repeat;
   background-size: 100%;
   margin: auto;
-}
-/* footer html */
-footer {
-  background-image: url("../img/footer-ligne.png");
-  background-repeat: repeat-x;
-  bottom: 0;
-  width: 100%;
 }
 .footer {
   background-image: url("../img/footer.png");
@@ -128,6 +103,33 @@ footer {
   margin: auto;
 }
 
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+  background: $color 0 0 repeat;
+}
+::-webkit-scrollbar-track-piece {
+  background: transparent none;
+  border: solid 4px transparent;
+  border-right-width: 12px;
+  @include box-shadow(inset 1px 1px 0 0 $color2, inset -1px -1px 0 0 $color4);
+}
+::-webkit-scrollbar-thumb {
+  border: solid 0 transparent;
+  border-right-width: 2px;
+  @include border-radius(5px);
+  @include border-top-right-radius(9px 5px);
+  @include border-bottom-right-radius(9px 5px);
+  @include box-shadow(inset 0 0 0 1px $color2, inset 0 0 0 6px $color3);
+}
+.scrollbar-y {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: $color3 $color;
+}
+
+/* liste des media responsive */
 // Small devices (landscape phones, 480px and up)
 @media (min-width: 0px) {
   header {
@@ -238,4 +240,111 @@ footer {
     width: 1280px;
     height: 320px;
   }
+}
+
+// PARTIE MENU SIDEBAR
+
+.wrapper {
+    position: absolute;
+    display: flex;
+    align-items: stretch;
+    margin-top: 43px;
+    margin-right: 100px;
+}
+
+#sidebar {
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 101vh;
+}
+
+#sidebar.active {
+    margin-left: -200px;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -200px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar {
+    /* don't forget to add all the previously mentioned styles here too */
+    background: #012150;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #012150;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #012150;
+}
+
+#sidebar ul p {
+    color: #fff;
+    text-align: center;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: #012150;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #012150;
+}
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #012150;
+}
+
+#logo {
+    background-image: url("../img/Logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 50px;
+    width: 100%;
+}
+
+#sidebarCollapse {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+}
+
+#btn-return {
+    color: #fff;
 }
