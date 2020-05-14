@@ -1,0 +1,31 @@
+{{ form_start(form) }}
+{% embed "decorators/_card.html.twig" %}
+    {% block body %}
+    {{ form_errors(form) }}
+    <div class="form-group">
+    {{ form_row(form.nom, { 'label': 'Nom' }) }}
+    </div>
+    <div class="form-group">
+    {{ form_row(form.prenom, { 'label': 'Prenom' }) }}
+    </div>
+    <div class="form-group">
+    {{ form_row(form.date_nee, { 'label': 'Date de naissance' }) }}
+    </div>
+    <div class="form-group">
+    {{ form_row(form.adress, { 'label': 'Adresse' }) }}
+    </div>
+    <div class="form-group">
+    {{ form_row(form.code_postal, { 'label': 'Code postal' }) }}
+    </div>
+    <div class="form-group">
+    {{ form_row(form.ville, { 'label': 'Ville' }) }}
+    </div>
+    <div class="form-group">
+    {{ form_row(form.pays, { 'label': 'Pays' }) }}
+    </div>
+    <div class="form-group">
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    </div>
+    {% endblock %}
+{% endembed %}
+{{ form_end(form) }}
