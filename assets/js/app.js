@@ -1,3 +1,4 @@
+import $ from "jquery";
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -16,3 +17,6 @@ console.log("************( ^)< MIAOU************");
 console.log("**********( <  )*******************");
 console.log("***********// \\\\**** BY AgorW******");
 console.log("***********************************");
+$("body").click(function () {
+  console.log("jquery");
+});
