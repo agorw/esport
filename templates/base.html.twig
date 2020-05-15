@@ -7,16 +7,18 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    <!-- DEBUT PARTIE MENU SIDEBAR -->
         <div class="wrapper">
             <!-- Sidebar -->
             <nav id="sidebar" class="active">
+                <!-- Bouton de retour lorsque le menu est déployé -->
                 <div class="sidebar-header">
                     <i id="btn-return" class="fas fa-arrow-alt-circle-left fa-2x"></i>
                     <div id="menuLogo"></div>
                 </div>
-                
+                <!-- Liste des items du menu -->
                 <ul class="list-unstyled components">
-                    <p> Votre Menu </p> 
+                    <h3> Votre Menu </h3>
                     <li>
                         <a href="#">Acceuil</a>
                     </li>
@@ -57,6 +59,7 @@
                 </ul>
             </nav>
         </div>
+        <!-- Bouton Toggle Menu permettant l'affichage du menu -->
         <div id="content">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
@@ -68,6 +71,8 @@
                 </div>
             </nav>
         </div>
+    <!-- FIN PARTIE MENU SIDEBAR -->
+
     <header><div class="header"></div></header>
         <div class="container ombre">
             <div class="col">

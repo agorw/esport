@@ -1,5 +1,9 @@
 // PARTIE MENU SIDEBAR
 
+// Declaration des variables couleurs
+$colorWhite: #fff;
+$colorDarkBlue: #012150;
+
 .wrapper {
   position: fixed;
   display: flex;
@@ -9,13 +13,13 @@
 }
 
 #sidebar {
-  min-width: 200px;
-  max-width: 200px;
+  min-width: 300px;
+  max-width: 300px;
   min-height: 115vh;
 }
 
 #sidebar.active {
-  margin-left: -200px;
+  margin-left: -3500px;
 }
 
 a[data-toggle="collapse"] {
@@ -32,7 +36,7 @@ a[data-toggle="collapse"] {
 
 @media (max-width: 768px) {
   #sidebar {
-    margin-left: -200px;
+    margin-left: -300px;
   }
   #sidebar.active {
     margin-left: 0;
@@ -48,23 +52,23 @@ a:focus {
 }
 
 #sidebar {
-  background: #012150;
-  color: #fff;
+  background: $colorDarkBlue;
+  color: $colorWhite;
   transition: all 0.3s;
 }
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #012150;
+  background: $colorDarkBlue;
 }
 
 #sidebar ul.components {
   padding: 20px 0;
-  border-bottom: 1px solid #012150;
+  border-bottom: 1px solid $colorDarkBlue;
 }
 
-#sidebar ul p {
-  color: #fff;
+#sidebar ul h3 {
+  color: $colorWhite;
   text-align: center;
 }
 
@@ -74,26 +78,27 @@ a:focus {
   display: block;
 }
 #sidebar ul li a:hover {
-  color: #012150;
-  background: #fff;
+  color: $colorDarkBlue;
+  background: $colorWhite;
 }
 
 #sidebar ul li.active > a,
 a[aria-expanded="true"] {
-  color: #fff;
-  background: #012150;
+  color: $colorWhite;
+  background: $colorDarkBlue;
 }
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #012150;
+  background: $colorDarkBlue;
 }
 
 #menuLogo {
   background-image: url("../img/Logo.png");
   background-repeat: no-repeat;
   background-size: contain;
-  height: 50px;
+  margin-left: 20px;
+  height: 75px;
   width: 100%;
 }
 
@@ -105,8 +110,8 @@ ul ul a {
 
 #btn-return {
   position: relative;
-  color: #fff;
-  left: 145px;
+  color: $colorWhite;
+  left: 240px;
   top: -10px;
 }
 
