@@ -20,6 +20,7 @@ console.log("**********( <  )*******************");
 console.log("***********// \\\\**** BY AgorW******");
 console.log("***********************************");
 
+/* formulaire profil ajout de la premiere ville et pays france avec code postal */
 let codePostal = document.getElementById("profil_code_postal");
 let pays = document.getElementById("profil_pays");
 let ville = document.getElementById("profil_ville");
@@ -33,17 +34,7 @@ codePostal.addEventListener("change", function () {
       let data = ajax.response;
       console.log(data);
       pays.value = data.country;
-      let i = 0;
-      ville.innerHTML = "<option value='select'>Selectionnez </option>";
-      for (let item in data.places) {
-        ville.innerHTML +=
-          "<option value='" +
-          data.places[i]["place name"] +
-          "'>" +
-          data.places[i]["place name"] +
-          "</option>";
-        i++;
-      }
+      ville.value = data.places[0]["place name"];
     };
   }
 });
