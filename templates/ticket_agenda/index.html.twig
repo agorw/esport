@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TicketAgenda index{% endblock %}
+
+{% block body %}
+    <h1>TicketAgenda index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date_event</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Date_create</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ticket_agenda in ticket_agendas %}
+            <tr>
+                <td>{{ ticket_agenda.id }}</td>
+                <td>{{ ticket_agenda.dateEvent ? ticket_agenda.dateEvent|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ ticket_agenda.title }}</td>
+                <td>{{ ticket_agenda.description }}</td>
+                <td>{{ ticket_agenda.type }}</td>
+                <td>{{ ticket_agenda.dateCreate ? ticket_agenda.dateCreate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('ticket_agenda_show', {'id': ticket_agenda.id}) }}">show</a>
+                    <a href="{{ path('ticket_agenda_edit', {'id': ticket_agenda.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('ticket_agenda_new') }}">Create new</a>
+{% endblock %}
