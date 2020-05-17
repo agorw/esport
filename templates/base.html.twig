@@ -7,72 +7,7 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-    <!-- DEBUT PARTIE MENU SIDEBAR -->
-        <div class="wrapper">
-            <!-- Sidebar -->
-            <nav id="sidebar" class="active">
-                <!-- Bouton de retour lorsque le menu est déployé -->
-                <div class="sidebar-header">
-                    <i id="btn-return" class="fas fa-arrow-alt-circle-left fa-2x"></i>
-                    <div id="menuLogo"></div>
-                </div>
-                <!-- Liste des items du menu -->
-                <ul class="list-unstyled components">
-                    <h3> Votre Menu </h3>
-                    <li>
-                        <a href="#">Acceuil</a>
-                    </li>
-                    <li>
-                        <a href="#profilSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profil</a>
-                        <ul class="collapse list-unstyled" id="profilSubmenu">
-                            <li>
-                                <a href="#">Votre Profil</a>
-                            </li>
-                            <li>
-                                <a href="#">Vos Stats</a>
-                            </li>
-                            <li>
-                                <a href="#">Votre Agenda</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Forum</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li>
-                                <a href="#">Nos Articles</a>
-                            </li>
-                            <li>
-                                <a href="#">Nos Didacticiels</a>
-                            </li>
-                            <li>
-                                <a href="#">Vos Interactions</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Votre Equipe</a>
-                    </li>
-                    <li>
-                        <a href="#">Messagerie</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <!-- Bouton Toggle Menu permettant l'affichage du menu -->
-        <div id="content">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                        <span><i class="fas fa-bars"></i> Menu </span>
-                    </button>
-
-                </div>
-            </nav>
-        </div>
-    <!-- FIN PARTIE MENU SIDEBAR -->
-
+    {% include 'menu/menu.html.twig' %}
     <header><div class="header"></div></header>
         <div class="container ombre">
             <div class="col">
@@ -85,7 +20,6 @@
                     <div class="colone"></div>
                     <div class="contenu" >
                         {% include 'decorators/_badge.html.twig' %}
-                        {% include 'menu/menu.html.twig' %}
                         
                         {% block body %}
                         {% endblock %}
