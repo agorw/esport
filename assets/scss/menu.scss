@@ -104,8 +104,9 @@ ul ul a {
 
 #sidebarCollapse {
   position: fixed;
-  top: 5px;
-  left: 5px;
+  color: $colorWhite;
+  top: 10%;
+  left: 10px;
 }
 
 #btn-return {
@@ -115,6 +116,7 @@ ul ul a {
   top: -10px;
 }
 
-#btn-return:hover {
+#btn-return:hover,
+#sidebarCollapse:hover {
   color: #008ab8;
 }
