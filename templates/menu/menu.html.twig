@@ -13,6 +13,7 @@
                     <li>
                         <a href="{{ path('index') }}">Accueil</a>
                     </li>
+                     {% if is_granted('ROLE_USER') %}
                     <li>
                         <a href="#profilSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profil</a>
                         <ul class="collapse list-unstyled" id="profilSubmenu">
@@ -27,6 +28,7 @@
                             </li>
                         </ul>
                     </li>
+                    {% endif %}
                     <li>
                         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Forum</a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -36,17 +38,32 @@
                             <li>
                                 <a href="#">Nos Didacticiels</a>
                             </li>
+                             {% if is_granted('ROLE_USER') %}
                             <li>
                                 <a href="#">Vos Interactions</a>
                             </li>
+                            {% endif %}
                         </ul>
                     </li>
+                    {% if is_granted('ROLE_USER') %}
                     <li>
                         <a href="#">Votre Equipe</a>
                     </li>
                     <li>
                         <a href="#">Messagerie</a>
                     </li>
+                    <li>
+                        <a href="{{ path('app_logout') }}">Deconnexion</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{{ path('app_register') }}">Inscription</a>
+                    </li>
+                    
+                    <li>
+                        <a href="{{ path('app_login') }}">Connexion</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>
