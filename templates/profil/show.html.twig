@@ -4,24 +4,27 @@
 {% block body %}
     <br>
     {% embed "decorators/_card.html.twig" with {'class': 'my-3 m-md-3'} %}
-    {% block header %}
-    <h3><a href="{{ path('profil_show', {'id': profil.id}) }}">{{ profil.nom }} {{ profil.prenom }}</a></h3>
-    {% endblock %}
 
+    {% block header %}
+    {% if app.user.profil == profil %}
+    <h3><a href="{{ path('profil_show', {'id': profil.id}) }}">{{ profil.nom }} {{ profil.prenom }}</a></h3>
+    {% endif %}
+    {% endblock %}
     {% block body %}
+    {% if app.user.profil == profil %}
         <table class="table">
             <tbody>
                 <tr>
-                    <th>Date_nee</th>
+                    <th>Date de naissance</th>
                     <td><i>{{ profil.dateNee|date('d/m/Y') }}</i></td>
                     
                 </tr>
                 <tr>
-                    <th>Adress</th>
+                    <th>Adresse</th>
                     <td>{{ profil.adress }}</td>
                 </tr>
                 <tr>
-                    <th>Code_postal</th>
+                    <th>Code postal</th>
                     <td>{{ profil.codePostal }}</td>
                 </tr>
                 <tr>
@@ -32,16 +35,17 @@
                     <th>Pays</th>
                     <td>{{ profil.pays }}</td>
                 </tr>
+                
                 <tr>
                     <td>
-                         <a class="btn btn-primary" href="{{ path('profil_edit', {'id': profil.id}) }}">Modifier</a>
+                        <a class="btn btn-primary" href="{{ path('profil_edit', {'id': profil.id}) }}">Modifier</a>
                     </td>
                     <td></td>
                 </tr>
+                
             </tbody>
         </table>
-
+    {% endif %}
     {% endblock %}
-
     {% endembed %}
 {% endblock %}
