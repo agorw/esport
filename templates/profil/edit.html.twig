@@ -3,7 +3,7 @@
 {% block title %}Edit Profil{% endblock %}
 
 {% block body %}
-
+{% if app.user.profil == profil %}
     {{ include('profil/_form.html.twig', {'button_label': 'Mise à jour'}) }}
-
+{% endif %}
 {% endblock %}
