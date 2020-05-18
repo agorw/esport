@@ -93,8 +93,8 @@ class BadgeController extends AbstractController
     }
 
     public function make_table (){
-        $badges = [
-            { id => ,
+        $badges = [];
+            // { id => ,
                 
     }
 }
