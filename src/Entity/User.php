@@ -51,7 +51,7 @@ class User implements UserInterface
      */
     private $pseudo;
 
-     /**
+    /**
      * @var string
      * @ORM\Column(name="telephone", type="string", length=35)
      * @Assert\NotBlank()
@@ -65,9 +65,16 @@ class User implements UserInterface
      */
     private $date_create;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Profil::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $profil;
+
     public function __construct()
     {
-    $this->date_create = new \DateTime('now');
+        $this->profil = new Profil;
+        $this->date_create = new \DateTime('now');
     }
 
     public function getId(): ?int
@@ -163,10 +170,10 @@ class User implements UserInterface
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
- 
+
         return $this;
     }
- 
+
     /**
      * Get telephone
      *
@@ -176,7 +183,7 @@ class User implements UserInterface
     {
         return $this->telephone;
     }
-  
+
     public function getDateCreate(): ?\DateTimeInterface
     {
         return $this->date_create;
@@ -189,5 +196,15 @@ class User implements UserInterface
         return $this;
     }
 
-    
+    public function getProfil(): ?Profil
+    {
+        return $this->profil;
+    }
+
+    public function setProfil(Profil $profil): self
+    {
+        $this->profil = $profil;
+
+        return $this;
+    }
 }

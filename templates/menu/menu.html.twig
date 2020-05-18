@@ -18,7 +18,7 @@
                         <a href="#profilSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profil</a>
                         <ul class="collapse list-unstyled" id="profilSubmenu">
                             <li>
-                                <a href="{{ path('profil_index') }}">Votre Profil</a>
+                                <a href="{{ path('profil_show', { 'id':app.user.profil.id }) }}">Votre Profil</a>
                             </li>
                             <li>
                                 <a href="#">Vos Stats</a>
