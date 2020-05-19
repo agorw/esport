@@ -84,17 +84,18 @@ class ProfilController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="profil_delete", methods={"DELETE"})
-     * @Security("is_granted('ROLE_USER')")
+     * //@Route("/{id}", name="profil_delete", methods={"DELETE"})
+     * //@Security("is_granted('ROLE_USER')")
+     *
+     * public function delete(Request $request, Profil $profil): Response
+     * {
+     *   if ($this->isCsrfTokenValid('delete' . $profil->getId(), $request->request->get('_token'))) {
+     *       $entityManager = $this->getDoctrine()->getManager();
+     *       $entityManager->remove($profil);
+     *       $entityManager->flush();
+     *   }
+     *
+     *     return $this->redirectToRoute('profil_index');
+     * }
      */
-    public function delete(Request $request, Profil $profil): Response
-    {
-        if ($this->isCsrfTokenValid('delete' . $profil->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($profil);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('profil_index');
-    }
 }
