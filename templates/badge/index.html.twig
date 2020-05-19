@@ -3,39 +3,26 @@
 {% block title %}Badge index{% endblock %}
 
 {% block body %}
-    <h1>Badge index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Level</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="row">
+  <div class="col-6">
+    <div class="card">
+      <div class="card-header">
+        Vos badges
+      </div>
+      <div class="card-body row">
         {% for badge in badges %}
-            <tr>
-                <td>{{ badge.id }}</td>
-                <td>{{ badge.nom }}</td>
-                <td>{{ badge.type }}</td>
-                <td>{{ badge.description }}</td>
-                <td>{{ badge.level }}</td>
-                <td>
-                    <a href="{{ path('badge_show', {'id': badge.id}) }}">show</a>
-                    <a href="{{ path('badge_edit', {'id': badge.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
+            <div class="card card-badge  col-4">
+                <div class="card-body">
+                    <img src="https://via.placeholder.com/140x100" class="vignette" alt="{{ badge.description }}" title="{{ badge.description }}">
+                    <label class="badge-lab"> {{ badge.nom }} </label>
+                </div>
+            </div>
+        
         {% endfor %}
-        </tbody>
-    </table>
-
+        </div>
+    </div>
+  </div>
+</div>
     <a href="{{ path('badge_new') }}">Create new</a>
 {% endblock %}
