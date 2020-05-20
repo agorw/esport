@@ -1,4 +1,4 @@
-<div class="col col-md-6 card {% if class is defined %}{{ class }}{% endif %}">
+<div class="card {% if class is defined %}{{ class }}{% endif %}">
     {% if block('header') is defined %}
     <div class="card-header {% if header_class is defined %}{{ header_class }}{% endif %}">
         {{ block('header') }}

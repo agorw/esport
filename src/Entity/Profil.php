@@ -61,6 +61,12 @@ class Profil
      */
     private $ville;
 
+    public function __construct()
+    {
+        $this->setType(0);
+        $this->setNiveau(0);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
