@@ -3,19 +3,18 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <h3>Inscription</h3>
+    
+    <div class="inscription"> </div>
+    <h1> Inscription </h1>
 
-     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.pseudo) }}
-        {{ form_row(registrationForm.Password) }}
-        {{ form_row(registrationForm.telephone) }}
-       
+    {{ form_start(registrationForm) }}  
+        {{ form_row(registrationForm.email, { 'label': 'E-mail' }) }}         
+        {{ form_row(registrationForm.pseudo, { 'label': 'Pseudo' }) }}       
+        {{ form_row(registrationForm.Password, { 'label': 'Mot de Passe' }) }}
+        {{ form_row(registrationForm.telephone, { 'label': 'Numéro de téléphone' }) }}    
 
-        <button class="btn btn-primary">Valider</button>
+        <button class="btn btn-primary mb-3">Valider</button>
         
-        
-
     {{ form_end(registrationForm) }}
 {% endblock %}
 

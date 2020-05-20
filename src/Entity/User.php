@@ -10,9 +10,9 @@ use App\Constraints as AppAssert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
- * @UniqueEntity(fields={"pseudo"}, message="There is already an account with this pseudo")
- * @UniqueEntity(fields={"telephone"}, message="There is already an account with this phone number")
+ * @UniqueEntity(fields={"email"}, message="E-mail déja utilisé !")
+ * @UniqueEntity(fields={"pseudo"}, message="Pseudo déja utilisé !")
+ * @UniqueEntity(fields={"telephone"}, message="Numéro de téléphone déja utilisé !")
  */
 class User implements UserInterface
 {
