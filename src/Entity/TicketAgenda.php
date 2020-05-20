@@ -42,6 +42,11 @@ class TicketAgenda
      */
     private $date_create;
 
+    public function __construct()
+    {
+        $this->date_create = new \DateTime('now');
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -3,7 +3,10 @@
 {% block title %}TicketAgenda index{% endblock %}
 
 {% block body %}
-    <h1>TicketAgenda index</h1>
+    <h1>Votre Agenda</h1>
+    
+    {{ include ('decorators/_calendar.html.twig') }}
+    
 
     <table class="table">
         <thead>

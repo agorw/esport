@@ -1,0 +1,30 @@
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 mt-3 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div id="calendar" class="calendar"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 mt-3 mb-5">
+        <div class="card h-50">
+            <h5 class="card-header">Vos Événements</h5>
+            <div class="card-body">
+                {% for ticket_agenda in ticket_agendas %}
+                    <h5 class="card-title">Titre: {{ ticket_agenda.title }}</h5>
+                    <h6 class="card-subtitle text-muted">date: {{ ticket_agenda.dateEvent ? ticket_agenda.dateEvent|date('Y-m-d H:i:s') : '' }}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">type: {{ ticket_agenda.type }}</h6>
+                    <p class="card-text">description: {{ ticket_agenda.description }}</p>
+                    <a id="btnAdd" href="{{ path('ticket_agenda_new') }}"><i class="fas fa-plus-square fa-2x"></i></a>
+                    {% if ticket_agenda.id %}
+                        <a id="btnEdit" href="{{ path('ticket_agenda_edit', {'id': ticket_agenda.id}) }}"><i class="fas fa-edit fa-2x"></i></a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}

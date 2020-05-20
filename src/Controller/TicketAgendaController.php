@@ -83,7 +83,7 @@ class TicketAgendaController extends AbstractController
      */
     public function delete(Request $request, TicketAgenda $ticketAgenda): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$ticketAgenda->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $ticketAgenda->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($ticketAgenda);
             $entityManager->flush();
