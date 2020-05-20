@@ -66,6 +66,10 @@ class Profil
         $this->setType(0);
         $this->setNiveau(0);
     }
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="profil" )
+     */
+    private $user;
 
     public function getId(): ?int
     {
@@ -176,6 +180,18 @@ class Profil
     public function setVille(?string $ville): self
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
