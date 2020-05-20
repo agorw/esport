@@ -1,20 +1,46 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Inscription{% endblock %}
+{% block body %}  
 
-{% block body %}
+{% embed "decorators/_card.html.twig" with {'class': 'my-3 m-md-3 col col-md-11'} %}
+     
+    {% block header %} <h1> Inscription </h1> {% endblock %}
+    {% block table %} 
+    {{ form_start(registrationForm) }} 
+        <table class="table">
+            <tbody>        
+                <tr>
+                    <th>E-mail</th>
+                    <td><i> {{ form_widget(registrationForm.email) }}  {{ form_errors(registrationForm.email) }}  </i></td> 
+                                      
+                </tr>
+                <tr>
+                    <th>Pseudo</th>
+                    <td>{{ form_widget(registrationForm.pseudo) }}   {{ form_errors(registrationForm.pseudo) }} </td>
+                </tr>
+                <tr>
+                    <th>Mot de Passe</th>
+                    <td>{{ form_widget(registrationForm.Password) }} {{ form_errors(registrationForm.Password) }}</td>
+                </tr>
+                <tr>
+                    <th>Numéro de téléphone</th>
+                    <td>{{ form_widget(registrationForm.telephone) }} {{ form_errors(registrationForm.telephone) }} </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn btn-primary mb-3">Valider</button>
+                    </td>
+                    <td></td>
+                </tr>
+                
+            </tbody>
+        </table>
+        {{ form_end(registrationForm) }}
+    {% endblock %}
     
-    <div class="inscription"> </div>
-    <h1> Inscription </h1>
-
-    {{ form_start(registrationForm) }}  
-        {{ form_row(registrationForm.email, { 'label': 'E-mail' }) }}         
-        {{ form_row(registrationForm.pseudo, { 'label': 'Pseudo' }) }}       
-        {{ form_row(registrationForm.Password, { 'label': 'Mot de Passe' }) }}
-        {{ form_row(registrationForm.telephone, { 'label': 'Numéro de téléphone' }) }}    
-
-        <button class="btn btn-primary mb-3">Valider</button>
-        
-    {{ form_end(registrationForm) }}
+{% endembed %}
 {% endblock %}
+
+
+
 
