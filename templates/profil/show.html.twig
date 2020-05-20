@@ -48,4 +48,5 @@
     {% endif %}
     {% endblock %}
     {% endembed %}
+    {% include "badge/index.html.twig" with {"badges":profil.user.badges} %}
 {% endblock %}

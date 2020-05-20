@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -66,15 +68,22 @@ class User implements UserInterface
     private $date_create;
 
     /**
-     * @ORM\OneToOne(targetEntity=Profil::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Profil::class, cascade={"persist", "remove"}, inversedBy="user")
      * @ORM\JoinColumn(nullable=false)
      */
     private $profil;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Badge", mappedBy="users")
+     */
+    private $badges;
+
 
     public function __construct()
     {
         $this->profil = new Profil;
         $this->date_create = new \DateTime('now');
+        $this->badges = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -204,6 +213,34 @@ class User implements UserInterface
     public function setProfil(Profil $profil): self
     {
         $this->profil = $profil;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Badge[]
+     */
+    public function getBadges(): Collection
+    {
+        return $this->badges;
+    }
+
+    public function addBadge(Badge $badge): self
+    {
+        if (!$this->badges->contains($badge)) {
+            $this->badges[] = $badge;
+            $badge->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBadge(Badge $badge): self
+    {
+        if ($this->badges->contains($badge)) {
+            $this->badges->removeElement($badge);
+            $badge->removeUser($this);
+        }
 
         return $this;
     }
