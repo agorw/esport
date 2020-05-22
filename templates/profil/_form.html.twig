@@ -24,7 +24,7 @@
     {{ form_row(form.pays, { 'label': 'Pays' }) }}
     </div>
     <div class="form-group">
-    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    <button class="btn btn-dark {{btn_class}}">{{ button_label|default('Save') }}</button>
     </div>
     {% endblock %}
 {% endembed %}

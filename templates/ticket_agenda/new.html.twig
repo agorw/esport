@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Event{% endblock %}
+
+{% block body %}
+    <h1>Votre nouvel événement</h1>
+
+    {{ include('ticket_agenda/_form.html.twig') }}
+
+    <a href="{{ path('ticket_agenda_index') }}"><i class="return" class="fas fa-arrow-alt-circle-left fa-2x"></i>Retourner à mon Agenda</a>
+{% endblock %}

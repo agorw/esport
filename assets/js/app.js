@@ -1,11 +1,15 @@
+import $ from "jquery";
 /*
  * Welcome to your app's main JavaScript file!
  *
  * We recommend including the built version of this JavaScript file
  * (and its CSS file) in your base layout (base.html.twig).
  */
-
+import "./menu";
 import "./common";
+import "./calendar";
+import "./profil";
+
 // any CSS you import will output into a single css file (app.css in this case)
 import "../scss/app.scss";
 
@@ -17,47 +21,4 @@ console.log("************( ^)< MIAOU************");
 console.log("**********( <  )*******************");
 console.log("***********// \\\\**** BY AgorW******");
 console.log("***********************************");
-
-let codePostal = document.getElementById("profil_code_postal");
-let pays = document.getElementById("profil_pays");
-let ville = document.getElementById("profil_ville");
-codePostal.addEventListener("change", function () {
-  if (codePostal.value != "") {
-    let ajax = new XMLHttpRequest();
-    ajax.responseType = "json";
-    ajax.open("GET", "http://api.zippopotam.us/fr/" + codePostal.value);
-    ajax.send();
-    ajax.onload = () => {
-      let data = ajax.response;
-      console.log(data);
-      pays.value = data.country;
-      let i = 0;
-      ville.innerHTML = "<option value='select'>Selectionnez </option>";
-      for (let item in data.places) {
-        ville.innerHTML +=
-          "<option value='" +
-          data.places[i]["place name"] +
-          "'>" +
-          data.places[i]["place name"] +
-          "</option>";
-        i++;
-      }
-    };
-  }
-<<<<<<< HEAD
-$("body").click(function () {
-  console.log("jquery");
-
-// Lorsqu'on clique sur le bouton menu, donne/enleve la classe "active" à sidebar
-// Cela permet de la faire apparaitre ou disparaitre
-$("#sidebarCollapse").click(function () {
-  $("#sidebar").toggleClass('active');
-  $("#sidebarCollapse").hide();
-=======
->>>>>>> versionning
-});
-
-$("#btn-return").click(function () {
-  $("#sidebar").toggleClass('active');
-  $("#sidebarCollapse").show()
-});
+console.log("***********************************");

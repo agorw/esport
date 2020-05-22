@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TicketAgenda{% endblock %}
+
+{% block body %}
+
+    <h1>TicketAgenda</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ticket_agenda.id }}</td>
+            </tr>
+            <tr>
+                <th>Date_event</th>
+                <td>{{ ticket_agenda.dateEvent ? ticket_agenda.dateEvent|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ ticket_agenda.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ ticket_agenda.description }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ ticket_agenda.type }}</td>
+            </tr>
+            <tr>
+                <th>Date_create</th>
+                <td>{{ ticket_agenda.dateCreate ? ticket_agenda.dateCreate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('ticket_agenda_index') }}">back to list</a>
+
+    <a href="{{ path('ticket_agenda_edit', {'id': ticket_agenda.id}) }}">edit</a>
+
+    {{ include('ticket_agenda/_delete_form.html.twig') }}
+{% endblock %}

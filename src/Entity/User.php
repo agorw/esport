@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -10,7 +12,9 @@ use App\Constraints as AppAssert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="E-mail déja utilisé !")
+ * @UniqueEntity(fields={"pseudo"}, message="Pseudo déja utilisé !")
+ * @UniqueEntity(fields={"telephone"}, message="Numéro de téléphone déja utilisé !")
  */
 class User implements UserInterface
 {
@@ -49,7 +53,7 @@ class User implements UserInterface
      */
     private $pseudo;
 
-     /**
+    /**
      * @var string
      * @ORM\Column(name="telephone", type="string", length=35)
      * @Assert\NotBlank()
@@ -63,9 +67,29 @@ class User implements UserInterface
      */
     private $date_create;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Profil::class, cascade={"persist", "remove"}, inversedBy="user")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $profil;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Badge", mappedBy="users")
+     */
+    private $badges;
+
+    /**
+     * @ORM\OneToMany(targetEntity=TicketAgenda::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $ticketAgendas;
+
+
     public function __construct()
     {
-    $this->date_create = new \DateTime('now');
+        $this->profil = new Profil;
+        $this->date_create = new \DateTime('now');
+        $this->badges = new ArrayCollection();
+        $this->ticketAgendas = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -161,10 +185,10 @@ class User implements UserInterface
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
- 
+
         return $this;
     }
- 
+
     /**
      * Get telephone
      *
@@ -174,7 +198,7 @@ class User implements UserInterface
     {
         return $this->telephone;
     }
-  
+
     public function getDateCreate(): ?\DateTimeInterface
     {
         return $this->date_create;
@@ -187,5 +211,74 @@ class User implements UserInterface
         return $this;
     }
 
-    
+    public function getProfil(): ?Profil
+    {
+        return $this->profil;
+    }
+
+    public function setProfil(Profil $profil): self
+    {
+        $this->profil = $profil;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Badge[]
+     */
+    public function getBadges(): Collection
+    {
+        return $this->badges;
+    }
+
+    public function addBadge(Badge $badge): self
+    {
+        if (!$this->badges->contains($badge)) {
+            $this->badges[] = $badge;
+            $badge->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBadge(Badge $badge): self
+    {
+        if ($this->badges->contains($badge)) {
+            $this->badges->removeElement($badge);
+            $badge->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TicketAgenda[]
+     */
+    public function getTicketAgendas(): Collection
+    {
+        return $this->ticketAgendas;
+    }
+
+    public function addTicketAgenda(TicketAgenda $ticketAgenda): self
+    {
+        if (!$this->ticketAgendas->contains($ticketAgenda)) {
+            $this->ticketAgendas[] = $ticketAgenda;
+            $ticketAgenda->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTicketAgenda(TicketAgenda $ticketAgenda): self
+    {
+        if ($this->ticketAgendas->contains($ticketAgenda)) {
+            $this->ticketAgendas->removeElement($ticketAgenda);
+            // set the owning side to null (unless already changed)
+            if ($ticketAgenda->getUser() === $this) {
+                $ticketAgenda->setUser(null);
+            }
+        }
+
+        return $this;
+    }
 }

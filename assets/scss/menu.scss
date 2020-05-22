@@ -1,0 +1,147 @@
+// PARTIE MENU SIDEBAR
+
+// Declaration des variables couleurs
+$colorWhite: #fff;
+$colorDarkBlue: #012150;
+
+.wrapper {
+  position: fixed;
+  display: flex;
+  align-items: stretch;
+  z-index: 10000;
+  margin-right: 100px;
+}
+
+#sidebar {
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 115vh;
+}
+
+#sidebar.active {
+  margin-left: -300px;
+}
+
+a[data-toggle="collapse"] {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -300px;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+}
+
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.7s ease-out;
+}
+
+#sidebar {
+  background: $colorDarkBlue;
+  color: $colorWhite;
+  transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+  padding: 20px;
+  background: $colorDarkBlue;
+}
+
+#sidebar ul.components {
+  padding: 20px 0;
+  border-bottom: 1px solid $colorDarkBlue;
+}
+
+#sidebar ul h3 {
+  color: $colorWhite;
+  text-align: center;
+}
+
+#sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+#sidebar ul li a:hover {
+  color: $colorDarkBlue;
+  background: $colorWhite;
+}
+
+#sidebar ul li.active > a,
+a[aria-expanded="true"] {
+  color: $colorWhite;
+  background: $colorDarkBlue;
+}
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: $colorDarkBlue;
+}
+
+#menuLogo {
+  background-image: url("../img/Logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: 20px;
+  height: 75px;
+  width: 100%;
+}
+
+#sidebarCollapse {
+  position: fixed;
+  color: $colorWhite;
+  top: 10%;
+  left: 10px;
+}
+
+#btn-return {
+  position: relative;
+  color: $colorWhite;
+  left: 240px;
+  top: -10px;
+}
+
+#btn-return:hover,
+#sidebarCollapse:hover {
+  color: #008ab8;
+}
+
+// Modification pour le responsive design
+// Small devices (landscape phones, 480px and up)
+@media (max-width: 480px) {
+  #sidebarCollapse {
+    position: absolute;
+    top: 2%;
+  }
+}
+
+/* mobil lg */
+@media (max-width: 576px) {
+  #sidebarCollapse {
+    position: absolute;
+    top: 2%;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+  #sidebarCollapse {
+    position: absolute;
+    top: 2%;
+  }
+}

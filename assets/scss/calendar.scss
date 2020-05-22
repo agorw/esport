@@ -1,0 +1,129 @@
+// PARTIE CALENDRIER
+
+// Declaration des variables couleurs
+$colorWhite: #fff;
+$colorMediumTeal: #008ab8;
+
+.calendar
+{
+    position: relative;
+    background: $colorWhite;
+    border-radius: 4px;
+    color: #222629;
+    overflow: hidden;
+}
+
+.calendar .calendarHeader
+{
+    background: #ddd;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.calendar .month
+{
+    display: inline-block;
+    font-weight: bold;
+}
+
+.calendar button
+{
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    font-family: Consolas;
+    font-size: 1.75rem;
+    height: 100%;
+    padding: 0 15px;
+}
+
+.calendar button:hover
+{
+    color: $colorMediumTeal;
+}
+
+.calendar button:first-child
+{
+    float: left;
+}
+
+.calendar button:last-child
+{
+    float: right;
+}
+
+.calendar .cell
+{
+    background: $colorWhite;
+    color: $colorMediumTeal;
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 10px 0;
+    text-align: center;
+    width: calc(100% / 7);
+}
+
+.calendar .cell .event
+{
+    flex-direction: column;
+    text-align: center;
+    height: 5px;
+}
+
+.calendar .cell .event span
+{
+    vertical-align: top;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    width: 5px;
+    height: 5px;
+    line-height: 5px;
+    margin: 0 1px;
+}
+
+.blue { background: rgba(156, 202, 235, 1); }
+.orange { background: rgba(247, 167, 0, 1); }
+.green { background: rgba(153, 198, 109, 1); }
+.yellow { background: rgba(249, 233, 0, 1); }
+
+.calendar .day
+{
+    font-size: .8rem;
+    padding: 8px 0;
+}
+
+.calendar .day, .calendar .today
+{
+    background: $colorMediumTeal;
+    color: $colorWhite;
+}
+
+
+// PARTIE CARTE D'EVENEMENT
+
+#accordion button .btn-link {
+    color: $colorMediumTeal; 
+    text-decoration: none; 
+}
+
+#btnAdd i,
+#btnEdit i,
+#btnShow i, {
+    color: $colorMediumTeal;
+}
+
+.footerEvent {
+    display: flex;
+    justify-content: flex-end;
+}
+
+// Code après écoute d'events
+
+.calendar .cell.other:hover
+{
+    background: $colorWhite;
+    border: 2px solid $colorMediumTeal;
+}
+

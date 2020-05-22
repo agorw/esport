@@ -2,26 +2,29 @@
 {% block title %}Fiche Profil{% endblock %}
 
 {% block body %}
-    <br>
-    {% embed "decorators/_card.html.twig" with {'class': 'my-3 m-md-3'} %}
-    {% block header %}
-    <h3><a href="{{ path('profil_show', {'id': profil.id}) }}">{{ profil.nom }} {{ profil.prenom }}</a></h3>
-    {% endblock %}
+    <div class="row d-flex justify-content-center">
+    <div class="col-10 col-md-6">
+    {% embed "decorators/_card.html.twig" with {'class': 'm-1'} %}
 
+    {% block header %}
+    {% if app.user.profil == profil %}
+    <h3><a href="{{ path('profil_show', {'id': profil.id}) }}">{{ profil.nom }} {{ profil.prenom }}</a></h3>
+    {% endif %}
+    {% endblock %}
     {% block body %}
+    {% if app.user.profil == profil or is_granted('ROLE_ADMIN') %}
         <table class="table">
             <tbody>
                 <tr>
-                    <th>Date_nee</th>
-                    <td><i>{{ profil.dateNee|date('d/m/Y') }}</i></td>
-                    
+                    <th>Date de naissance</th>
+                    <td><i>{{ profil.dateNee|date('00/00/0000')}}</i></td>
                 </tr>
                 <tr>
-                    <th>Adress</th>
+                    <th>Adresse</th>
                     <td>{{ profil.adress }}</td>
                 </tr>
                 <tr>
-                    <th>Code_postal</th>
+                    <th>Code postal</th>
                     <td>{{ profil.codePostal }}</td>
                 </tr>
                 <tr>
@@ -32,16 +35,20 @@
                     <th>Pays</th>
                     <td>{{ profil.pays }}</td>
                 </tr>
+                
                 <tr>
                     <td>
-                         <a class="btn btn-primary" href="{{ path('profil_edit', {'id': profil.id}) }}">Modifier</a>
+                        <a class="btn" href="{{ path('profil_edit', {'id': profil.id}) }}"><i class="fas fa-edit fa-2x"></i></a>
                     </td>
                     <td></td>
                 </tr>
+                
             </tbody>
         </table>
-
+    {% endif %}
     {% endblock %}
-
     {% endembed %}
+    </div>
+    {% include "badge/index.html.twig" with {"badges":profil.user.badges} %}
+    </div>
 {% endblock %}

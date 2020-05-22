@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * @Route("/profil")
@@ -17,6 +18,7 @@ class ProfilController extends AbstractController
 {
     /**
      * @Route("/", name="profil_index", methods={"GET"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function index(ProfilRepository $profilRepository): Response
     {
@@ -27,6 +29,7 @@ class ProfilController extends AbstractController
 
     /**
      * @Route("/new", name="profil_new", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +53,7 @@ class ProfilController extends AbstractController
 
     /**
      * @Route("/{id}", name="profil_show", methods={"GET"})
+     * @Security("is_granted('ROLE_USER')")
      */
     public function show(Profil $profil): Response
     {
@@ -60,6 +64,7 @@ class ProfilController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="profil_edit", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_USER')")
      */
     public function edit(Request $request, Profil $profil): Response
     {
@@ -79,16 +84,18 @@ class ProfilController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="profil_delete", methods={"DELETE"})
+     * //@Route("/{id}", name="profil_delete", methods={"DELETE"})
+     * //@Security("is_granted('ROLE_USER')")
+     *
+     * public function delete(Request $request, Profil $profil): Response
+     * {
+     *   if ($this->isCsrfTokenValid('delete' . $profil->getId(), $request->request->get('_token'))) {
+     *       $entityManager = $this->getDoctrine()->getManager();
+     *       $entityManager->remove($profil);
+     *       $entityManager->flush();
+     *   }
+     *
+     *     return $this->redirectToRoute('profil_index');
+     * }
      */
-    public function delete(Request $request, Profil $profil): Response
-    {
-        if ($this->isCsrfTokenValid('delete' . $profil->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($profil);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('profil_index');
-    }
 }

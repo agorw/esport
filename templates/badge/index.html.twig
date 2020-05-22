@@ -1,41 +1,20 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Badge index{% endblock %}
 
-{% block body %}
-    <h1>Badge index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Level</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+  <div class="col-10 col-md-5 m-1">
+    <div class="card">
+      <div class="card-header">
+        Vos badges
+      </div>
+      <div class="card-body row">
         {% for badge in badges %}
-            <tr>
-                <td>{{ badge.id }}</td>
-                <td>{{ badge.nom }}</td>
-                <td>{{ badge.type }}</td>
-                <td>{{ badge.description }}</td>
-                <td>{{ badge.level }}</td>
-                <td>
-                    <a href="{{ path('badge_show', {'id': badge.id}) }}">show</a>
-                    <a href="{{ path('badge_edit', {'id': badge.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
+            <div class="card card-badge  col-4">
+                <div class="card-body">
+                    <img src="https://via.placeholder.com/140x100" class="vignette" alt="{{ badge.description }}" title="{{ badge.description }}">
+                    <label class="badge-lab"> {{ badge.nom }} </label>
+                </div>
+            </div>
+        
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('badge_new') }}">Create new</a>
-{% endblock %}
+        </div>
+    </div>
+  </div>

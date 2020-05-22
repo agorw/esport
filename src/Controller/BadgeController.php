@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * @Route("/badge")
@@ -27,6 +28,7 @@ class BadgeController extends AbstractController
 
     /**
      * @Route("/new", name="badge_new", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function new(Request $request): Response
     {
@@ -60,6 +62,7 @@ class BadgeController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="badge_edit", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function edit(Request $request, Badge $badge): Response
     {
@@ -83,7 +86,7 @@ class BadgeController extends AbstractController
      */
     public function delete(Request $request, Badge $badge): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$badge->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $badge->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($badge);
             $entityManager->flush();

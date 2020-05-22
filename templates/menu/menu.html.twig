@@ -1,0 +1,84 @@
+    <!-- DEBUT PARTIE MENU SIDEBAR -->
+        <div class="wrapper">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="active">
+                <!-- Bouton de retour lorsque le menu est déployé -->
+                <div class="sidebar-header">
+                    <i id="btn-return" class="fas fa-arrow-alt-circle-left fa-2x"></i>
+                    <div id="menuLogo"></div>
+                </div>
+                <!-- Liste des items du menu -->
+                <ul class="list-unstyled components">
+                    <h3> Votre Menu </h3>
+                    <li>
+                        <a href="{{ path('index') }}">Accueil</a>
+                    </li>
+                     {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
+                    <li>
+                        <a href="#profilSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profil</a>
+                        <ul class="collapse list-unstyled" id="profilSubmenu">
+                            {% if is_granted('ROLE_USER') %}
+                            <li>
+                                <a href="{{ path('profil_show', { 'id':app.user.profil.id }) }}">Votre Profil</a>
+                            </li>
+                            {% elseif is_granted('ROLE_ADMIN') %}
+                            <li>
+                                <a href="{{ path('profil_index') }}">List des Profils</a>
+                            </li>
+                            {% endif %}
+                            <li>
+                                <a href="#">Vos Stats</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('ticket_agenda_index') }}">Votre Agenda</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Forum</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li>
+                                <a href="#">Nos Articles</a>
+                            </li>
+                            <li>
+                                <a href="#">Nos Didacticiels</a>
+                            </li>
+                            {% if is_granted('ROLE_USER') %}
+                            <li>
+                                <a href="#">Vos Interactions</a>
+                            </li>
+                            {% elseif is_granted('ROLE_ADMIN') %}
+                            <li>
+                                <a href="#">Administration</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
+                    <li>
+                        <a href="#">Votre Equipe</a>
+                    </li>
+                    <li>
+                        <a href="#">Messagerie</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_logout') }}">Deconnexion</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{{ path('app_register') }}">Inscription</a>
+                    </li>
+                    
+                    <li>
+                        <a href="{{ path('app_login') }}">Connexion</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        <!-- Bouton Toggle Menu permettant l'affichage du menu -->
+        <div id="content">
+            <i id="sidebarCollapse" class="fas fa-arrow-alt-circle-right fa-3x"></i>
+        </div>
+    <!-- FIN PARTIE MENU SIDEBAR -->
