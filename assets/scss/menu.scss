@@ -3,6 +3,7 @@
 // Declaration des variables couleurs
 $colorWhite: #fff;
 $colorDarkBlue: #012150;
+$colorMediumTeal: #008ab8;
 
 .wrapper {
   position: fixed;
@@ -102,8 +103,22 @@ ul ul a {
   width: 100%;
 }
 
+#content {
+  display: block;
+  position: fixed;
+  z-index: 500;
+  background-color: $colorDarkBlue;
+  border: 3px solid $colorWhite;
+  border-radius: 0% 40% 40% 0%;
+  width: 90px;
+  height: 64px;
+  top: 9%;
+  left: -2%;
+}
+
 #sidebarCollapse {
   position: fixed;
+  z-index: 500;
   color: $colorWhite;
   top: 10%;
   left: 10px;
@@ -118,7 +133,11 @@ ul ul a {
 
 #btn-return:hover,
 #sidebarCollapse:hover {
-  color: #008ab8;
+  color: $colorMediumTeal;
+}
+
+#content:hover {
+  border: 3px solid $colorMediumTeal;
 }
 
 // Modification pour le responsive design
@@ -128,13 +147,10 @@ ul ul a {
     position: absolute;
     top: 2%;
   }
-}
-
-/* mobil lg */
-@media (max-width: 576px) {
-  #sidebarCollapse {
-    position: absolute;
-    top: 2%;
+  #content {
+    top:2%;
+    width: 50px;
+    height: 40px;
   }
 }
 
@@ -144,4 +160,20 @@ ul ul a {
     position: absolute;
     top: 2%;
   }
+  #content {
+    top:2%;
+    width: 50px;
+    height: 40px;
+  }
+}
+
+// Large devices (desktops, 1024px and up)
+@media (min-width: 1024px) {
+  #content {
+    background-color: inherit;
+    border: inherit;
+  }
+  #content:hover {
+  border: inherit;
+}
 }
