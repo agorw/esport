@@ -9,28 +9,20 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ ticket_agenda.id }}</td>
-            </tr>
-            <tr>
-                <th>Date_event</th>
-                <td>{{ ticket_agenda.dateEvent ? ticket_agenda.dateEvent|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
+                <th class="bg-info">Titre</th>
                 <td>{{ ticket_agenda.title }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th class="bg-info">Date de l'événement</th>
+                <td>{{ ticket_agenda.dateEvent ? ticket_agenda.dateEvent|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th class="bg-info">Type</th>
+                <td class="ticketType">{{ ticket_agenda.type }}</td>
+            </tr>
+            <tr>
+                <th class="bg-info">Description</th>
                 <td>{{ ticket_agenda.description }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ ticket_agenda.type }}</td>
-            </tr>
-            <tr>
-                <th>Date_create</th>
-                <td>{{ ticket_agenda.dateCreate ? ticket_agenda.dateCreate|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
