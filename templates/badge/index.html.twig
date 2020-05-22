@@ -1,15 +1,15 @@
 
 
-  <div class="col-10 col-md-5 m-1">
+  <div class="col-10 col-md-5">
     <div class="card">
       <div class="card-header">
         Vos badges
       </div>
       <div class="card-body row">
         {% for badge in badges %}
-            <div class="card card-badge  col-4">
+            <div class="card">
                 <div class="card-body">
-                    <img src="https://via.placeholder.com/140x100" class="vignette" alt="{{ badge.description }}" title="{{ badge.description }}">
+                    <img src="/img/badgeNA.png" class="vignette" alt="{{ badge.description }}" title="{{ badge.description }}">
                     <label class="badge-lab"> {{ badge.nom }} </label>
                 </div>
             </div>
