@@ -42,6 +42,17 @@ class TicketAgenda
      */
     private $date_create;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="ticketAgendas")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    public function __construct()
+    {
+        $this->date_create = new \DateTime('now');
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +114,18 @@ class TicketAgenda
     public function setDateCreate(\DateTimeInterface $date_create): self
     {
         $this->date_create = $date_create;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

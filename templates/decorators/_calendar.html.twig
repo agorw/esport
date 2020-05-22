@@ -1,0 +1,38 @@
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-5 mt-3 mb-5">
+            <div class="card ml-2">
+                <div class="card-body">
+                    <div id="calendar" class="calendar"></div>
+                </div>
+            </div>
+        </div>
+        <div id="accordion" class="col-sm-6 mt-3 mb-5">
+        {% for ticket_agenda in ticket_agendas %}
+            <div class="card mt-2">
+                <div class="card-header" id="headingOne">
+                    <h3 class="mb-0 text-decoration-none">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ ticket_agenda.id }}" aria-expanded="true" aria-controls="collapse{{ ticket_agenda.id }}">
+                            {{ ticket_agenda.title }}
+                        </button>
+                    </h3>
+                </div>
+                <div id="collapse{{ ticket_agenda.id }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-1 text-muted">{{ ticket_agenda.dateEvent ? ticket_agenda.dateEvent|date('d-m-Y H:i:s') : '' }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ ticket_agenda.type }}</h6>
+                        <p class="card-text">{{ ticket_agenda.description }}</p>
+                    </div>
+                    <div class="card-footer footerEvent">        
+                    {% if ticket_agenda.id %}
+                        <a id="btnEdit" href="{{ path('ticket_agenda_edit', {'id': ticket_agenda.id}) }}"><i class="fas fa-edit fa-2x"></i></a>
+                    {% endif %}
+                    </div>
+                </div>  
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

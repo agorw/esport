@@ -1,7 +1,9 @@
 /* formulaire profil ajout de la premiere ville et pays france avec code postal */
+if (document.getElementById("profil_code_postal")) {
 let codePostal = document.getElementById("profil_code_postal");
 let pays = document.getElementById("profil_pays");
 let ville = document.getElementById("profil_ville");
+
 codePostal.addEventListener("change", function () {
   if (codePostal.value != "") {
     let ajax = new XMLHttpRequest();
@@ -16,3 +18,4 @@ codePostal.addEventListener("change", function () {
     };
   }
 });
+};

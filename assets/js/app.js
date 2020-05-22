@@ -7,6 +7,7 @@ import $ from "jquery";
  */
 import "./menu";
 import "./common";
+import "./calendar";
 import "./profil";
 
 // any CSS you import will output into a single css file (app.css in this case)

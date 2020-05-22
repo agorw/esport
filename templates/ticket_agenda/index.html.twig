@@ -1,34 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}TicketAgenda index{% endblock %}
+{% block title %}Agenda{% endblock %}
 
 {% block body %}
-    <h1>TicketAgenda index</h1>
-
-    <table class="table">
+    <h1>Votre Agenda</h1>
+    
+    {{ include ('decorators/_calendar.html.twig') }}
+    
+    <h2 class="mx-3">Votre liste d'événements</h2>
+    <table class="table table-sm text-center">
         <thead>
-            <tr>
+            <tr class="bg-info">
+                {% if is_granted('ROLE_ADMIN') %}
                 <th>Id</th>
-                <th>Date_event</th>
-                <th>Title</th>
+                {% endif %}
+                <th>Titre</th>
+                <th>Date de l'event</th>
                 <th>Description</th>
                 <th>Type</th>
-                <th>Date_create</th>
-                <th>actions</th>
+                <th>Date de création</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for ticket_agenda in ticket_agendas %}
             <tr>
+                {% if is_granted('ROLE_ADMIN') %}
                 <td>{{ ticket_agenda.id }}</td>
-                <td>{{ ticket_agenda.dateEvent ? ticket_agenda.dateEvent|date('Y-m-d H:i:s') : '' }}</td>
+                {% endif %}
                 <td>{{ ticket_agenda.title }}</td>
+                <td>{{ ticket_agenda.dateEvent ? ticket_agenda.dateEvent|date('d-m-Y H:i:s') : '' }}</td>
                 <td>{{ ticket_agenda.description }}</td>
                 <td>{{ ticket_agenda.type }}</td>
-                <td>{{ ticket_agenda.dateCreate ? ticket_agenda.dateCreate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ ticket_agenda.dateCreate ? ticket_agenda.dateCreate|date('d-m-Y') : '' }}</td>
                 <td>
-                    <a href="{{ path('ticket_agenda_show', {'id': ticket_agenda.id}) }}">show</a>
-                    <a href="{{ path('ticket_agenda_edit', {'id': ticket_agenda.id}) }}">edit</a>
+                    <a id="btnShow" href="{{ path('ticket_agenda_show', {'id': ticket_agenda.id}) }}"><i class="fas fa-eye fa-2x"></i></a>
+                    <a id="btnEdit" href="{{ path('ticket_agenda_edit', {'id': ticket_agenda.id}) }}"><i class="fas fa-edit fa-2x"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +46,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('ticket_agenda_new') }}">Create new</a>
+    <a id="btnNew"class="mx-5 d-flex flex-row-reverse" href="{{ path('ticket_agenda_new') }}"><i class="fas fa-plus-square fa-3x"></i></a>
 {% endblock %}

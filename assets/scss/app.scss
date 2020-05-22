@@ -1,6 +1,8 @@
 @import "common.scss";
 @import "badge";
 @import "menu";
+@import "calendar";
+@import "ticketAgenda";
 
 /* Variables des couleurs du projet */
 $color: #fff;
@@ -77,7 +79,7 @@ footer {
 .contenu {
   width: calc(100% - 20px);
   min-height: 60vh;
-  background-color: $color;
+  background-color: #fff;
 }
 .ban {
   background-image: url("../img/dent.png");

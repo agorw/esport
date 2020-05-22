@@ -78,12 +78,18 @@ class User implements UserInterface
      */
     private $badges;
 
+    /**
+     * @ORM\OneToMany(targetEntity=TicketAgenda::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $ticketAgendas;
+
 
     public function __construct()
     {
         $this->profil = new Profil;
         $this->date_create = new \DateTime('now');
         $this->badges = new ArrayCollection();
+        $this->ticketAgendas = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -240,6 +246,37 @@ class User implements UserInterface
         if ($this->badges->contains($badge)) {
             $this->badges->removeElement($badge);
             $badge->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TicketAgenda[]
+     */
+    public function getTicketAgendas(): Collection
+    {
+        return $this->ticketAgendas;
+    }
+
+    public function addTicketAgenda(TicketAgenda $ticketAgenda): self
+    {
+        if (!$this->ticketAgendas->contains($ticketAgenda)) {
+            $this->ticketAgendas[] = $ticketAgenda;
+            $ticketAgenda->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTicketAgenda(TicketAgenda $ticketAgenda): self
+    {
+        if ($this->ticketAgendas->contains($ticketAgenda)) {
+            $this->ticketAgendas->removeElement($ticketAgenda);
+            // set the owning side to null (unless already changed)
+            if ($ticketAgenda->getUser() === $this) {
+                $ticketAgenda->setUser(null);
+            }
         }
 
         return $this;
