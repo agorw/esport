@@ -94,11 +94,4 @@ class BadgeController extends AbstractController
 
         return $this->redirectToRoute('badge_index');
     }
-
-    public function make_table()
-    {
-        $badges = [];
-        // { id => , 
-
-    }
 }

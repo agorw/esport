@@ -13,13 +13,19 @@
                     <li>
                         <a href="{{ path('index') }}">Accueil</a>
                     </li>
-                     {% if is_granted('ROLE_USER') %}
+                     {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
                     <li>
                         <a href="#profilSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profil</a>
                         <ul class="collapse list-unstyled" id="profilSubmenu">
+                            {% if is_granted('ROLE_USER') %}
                             <li>
                                 <a href="{{ path('profil_show', { 'id':app.user.profil.id }) }}">Votre Profil</a>
                             </li>
+                            {% elseif is_granted('ROLE_ADMIN') %}
+                            <li>
+                                <a href="{{ path('profil_index') }}">List des Profils</a>
+                            </li>
+                            {% endif %}
                             <li>
                                 <a href="#">Vos Stats</a>
                             </li>
@@ -38,14 +44,18 @@
                             <li>
                                 <a href="#">Nos Didacticiels</a>
                             </li>
-                             {% if is_granted('ROLE_USER') %}
+                            {% if is_granted('ROLE_USER') %}
                             <li>
                                 <a href="#">Vos Interactions</a>
+                            </li>
+                            {% elseif is_granted('ROLE_ADMIN') %}
+                            <li>
+                                <a href="#">Administration</a>
                             </li>
                             {% endif %}
                         </ul>
                     </li>
-                    {% if is_granted('ROLE_USER') %}
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
                     <li>
                         <a href="#">Votre Equipe</a>
                     </li>

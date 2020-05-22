@@ -2,8 +2,9 @@
 {% block title %}Fiche Profil{% endblock %}
 
 {% block body %}
-    <br>
-    {% embed "decorators/_card.html.twig" with {'class': 'my-3 m-md-3 col col-md-6'} %}
+    <div class="row d-flex justify-content-center">
+    <div class="col-11 col-md-6">
+    {% embed "decorators/_card.html.twig" with {'class': 'm-1'} %}
 
     {% block header %}
     {% if app.user.profil == profil %}
@@ -11,13 +12,12 @@
     {% endif %}
     {% endblock %}
     {% block body %}
-    {% if app.user.profil == profil %}
+    {% if app.user.profil == profil or is_granted('ROLE_ADMIN') %}
         <table class="table">
             <tbody>
                 <tr>
                     <th>Date de naissance</th>
-                    <td><i>{{ profil.dateNee|date('d/m/Y') }}</i></td>
-                    
+                    <td><i>{{ profil.dateNee|date('00/00/0000')}}</i></td>
                 </tr>
                 <tr>
                     <th>Adresse</th>
@@ -48,5 +48,7 @@
     {% endif %}
     {% endblock %}
     {% endembed %}
+    </div>
     {% include "badge/index.html.twig" with {"badges":profil.user.badges} %}
+    </div>
 {% endblock %}
