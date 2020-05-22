@@ -21,7 +21,7 @@
                 <div id="collapse{{ ticket_agenda.id }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <h6 class="card-subtitle mb-1 text-muted">{{ ticket_agenda.dateEvent ? ticket_agenda.dateEvent|date('d-m-Y H:i:s') : '' }}</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ ticket_agenda.type }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted ticketType">{{ ticket_agenda.type }}</h6>
                         <p class="card-text">{{ ticket_agenda.description }}</p>
                     </div>
                     <div class="card-footer footerEvent">        

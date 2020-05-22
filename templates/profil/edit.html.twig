@@ -3,9 +3,16 @@
 {% block title %}Edit Profil{% endblock %}
 
 {% block body %}
+ {% embed "decorators/_card.html.twig" with {'class': ''} %}
+    {% block header %}
+        <h4>Edit profil</h4>
+    {% endblock %}
+    {% block body %}
 {% if app.user.profil == profil %}
     {{ include('profil/_form.html.twig', {'button_label': ' ','btn_class': 'fas fa-save' }) }}
 {% else %}
     <p>Vous ne pouvez pas modifier le profil d'un autre utilisateur.</p>
 {% endif %}
+    {% endblock %}
+    {% endembed %}
 {% endblock %}
