@@ -2,6 +2,7 @@
 @import "badge";
 @import "menu";
 @import "calendar";
+@import "ticketAgenda";
 
 /* Variables des couleurs du projet */
 $color: #fff;
@@ -27,10 +28,6 @@ footer {
   background-repeat: repeat-x;
   bottom: 0;
   width: 100%;
-}
-
-h1 {
-  margin: 50px;
 }
 
 /* class */

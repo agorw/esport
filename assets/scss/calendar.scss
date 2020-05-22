@@ -103,12 +103,20 @@ $colorMediumTeal: #008ab8;
 
 // PARTIE CARTE D'EVENEMENT
 
+#accordion button .btn-link {
+    color: $colorMediumTeal; 
+    text-decoration: none; 
+}
+
 #btnAdd i,
-#btnEdit i {
-    position: absolute;
+#btnEdit i,
+#btnShow i, {
     color: $colorMediumTeal;
-    bottom: 5px;
-    right: 5px;
+}
+
+.footerEvent {
+    display: flex;
+    justify-content: flex-end;
 }
 
 // Code après écoute d'events

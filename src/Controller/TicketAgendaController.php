@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * @Route("/ticket/agenda")
@@ -17,20 +18,23 @@ class TicketAgendaController extends AbstractController
 {
     /**
      * @Route("/", name="ticket_agenda_index", methods={"GET"})
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')")
      */
     public function index(TicketAgendaRepository $ticketAgendaRepository): Response
     {
         return $this->render('ticket_agenda/index.html.twig', [
-            'ticket_agendas' => $ticketAgendaRepository->findAll(),
+            'ticket_agendas' => $ticketAgendaRepository->findByUser($this->getUser()),
         ]);
     }
 
     /**
      * @Route("/new", name="ticket_agenda_new", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_USER')")
      */
     public function new(Request $request): Response
     {
         $ticketAgenda = new TicketAgenda();
+        $ticketAgenda->setUser($this->getUser());
         $form = $this->createForm(TicketAgendaType::class, $ticketAgenda);
         $form->handleRequest($request);
 
@@ -50,6 +54,7 @@ class TicketAgendaController extends AbstractController
 
     /**
      * @Route("/{id}", name="ticket_agenda_show", methods={"GET"})
+     * @Security("is_granted('ROLE_USER')")
      */
     public function show(TicketAgenda $ticketAgenda): Response
     {
@@ -60,6 +65,7 @@ class TicketAgendaController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="ticket_agenda_edit", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_USER')")
      */
     public function edit(Request $request, TicketAgenda $ticketAgenda): Response
     {
@@ -80,6 +86,7 @@ class TicketAgendaController extends AbstractController
 
     /**
      * @Route("/{id}", name="ticket_agenda_delete", methods={"DELETE"})
+     * @Security("is_granted('ROLE_USER')")
      */
     public function delete(Request $request, TicketAgenda $ticketAgenda): Response
     {
