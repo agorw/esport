@@ -5,5 +5,7 @@
 {% block body %}
 {% if app.user.profil == profil %}
     {{ include('profil/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+{% else %}
+    <p>Vous ne pouvez pas modifier le profil d'un autre utilisateur.</p>
 {% endif %}
 {% endblock %}
